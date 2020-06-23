@@ -13,7 +13,7 @@ old = theme_set(theme_bw(base_family="HiraKakuProN-W3"))
 ######################################################################
 # Change Working Directory
 ######################################################################
-setwd("/Users/fumiyau/Dropbox (Princeton)/09.1.DropoutCollegeMajor/~Git/DropoutCollegeMajor") 
+setwd("~/Dropbox (Princeton)/09.1.DropoutCollegeMajor/~Git/DropoutCollegeMajor") 
 source("appid.R")
 ######################################################################
 # Read data: Census mid year population
