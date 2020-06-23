@@ -13,8 +13,8 @@ old = theme_set(theme_bw(base_family="HiraKakuProN-W3"))
 ######################################################################
 # Change Working Directory
 ######################################################################
-setwd("/Users/fumiyau/Dropbox (Princeton)/09.1.DropoutCollegeMajor/") 
-
+setwd("/Users/fumiyau/Dropbox (Princeton)/09.1.DropoutCollegeMajor/~Git/DropoutCollegeMajor") 
+source("appid.R")
 ######################################################################
 # Read data: Census mid year population
 ######################################################################
@@ -168,7 +168,7 @@ enter <- estat_getStatsData(
   dplyr::select(sex=`cat02_code`,inst=`cat03_code`,inst_lab=`設置者別`,major=`cat04_code`,major_lab=`関係学科別`,enter=value)
 
 #関係学科別卒業者数 2016（就業年限4年）
-datalist <- estat_getStatsList(appId = appid_fu, searchWord = "学校基本調査 卒業後の状況調査 大学")
+#datalist <- estat_getStatsList(appId = appid_fu, searchWord = "学校基本調査 卒業後の状況調査 大学")
 meta <- estat_getMetaInfo(appId = appid_fu, statsDataId = "0003198180")
 
 gradH28 <- estat_getStatsData(
@@ -203,12 +203,12 @@ ggplot(merge2008x, mapping = aes(x=major_lab,y=excess))+
   geom_hline(data=hline_dat, aes(yintercept = threshold),linetype="dotted") +
   geom_hline(yintercept = 0,linetype="solid",size=0.1) +
   scale_colour_manual(values=cbp1) +ggtitle("2008年度4年制大学入学者に占める8年以内中退率の男女差（点線は平均）")
-ggsave(height=10,width=8,dpi=200, filename="2.Results/1.Fig/8yearsDropout2008.png",  family = "Helvetica")
+ggsave(height=10,width=8,dpi=200, filename="Results/1.Fig/8yearsDropout2008.png",  family = "Helvetica")
 
 ggplot(df, mapping = aes(x=major_lab,y=rate,group=sex,color=sex,shape=sex))+
   geom_point()+facet_wrap(~inst_lab, ncol = 4)+ xlab("Major") + ylab("")+ coord_flip() +
   theme(legend.title=element_blank()) +
   scale_colour_manual(values=cbp1) +ggtitle("Crude dropout rate by sex and institution type among 2012 cohorts")
-ggsave(height=9,width=16,dpi=200, filename="2.Results/1.Fig/Crude2012.png",  family = "Helvetica")
+ggsave(height=9,width=16,dpi=200, filename="Results/1.Fig/Crude2012.png",  family = "Helvetica")
 
 
